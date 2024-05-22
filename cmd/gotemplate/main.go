@@ -10,15 +10,16 @@ import (
 )
 
 func main() {
-	help := flag.String("help", "-", "Help command")
+	help := flag.String("help", "", "Help command")
 	projectName := flag.String("name", "", "Project name")
 	dbType := flag.String("db", "-", "Database type (postgres or mysql or sqlite3 or mssql)")
 	withAuth := flag.String("auth", "false", "Use auth (true or false)")
-	if *projectName == "" || *help != "-" {
+	flag.Parse()
+
+	if *projectName == "" || *help != "" {
 		flag.PrintDefaults()
 		return
 	}
-	flag.Parse()
 
 	config := cfg.Config{
 		ProjectName: *projectName,
