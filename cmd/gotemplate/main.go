@@ -10,10 +10,14 @@ import (
 )
 
 func main() {
-	projectName := flag.String("name", "gotemplate", "Project name")
-	dbType := flag.String("db", "postgresql", "Database type (postgres or mysql)")
-	withAuth := flag.String("auth", "true", "Use auth (true or false)")
-
+	help := flag.String("help", "-", "Help command")
+	projectName := flag.String("name", "", "Project name")
+	dbType := flag.String("db", "-", "Database type (postgres or mysql or sqlite3 or mssql)")
+	withAuth := flag.String("auth", "false", "Use auth (true or false)")
+	if *projectName == "" || *help != "-" {
+		flag.PrintDefaults()
+		return
+	}
 	flag.Parse()
 
 	config := cfg.Config{
