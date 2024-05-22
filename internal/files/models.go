@@ -1,6 +1,6 @@
 package files
 
-import "projectgenerator/internal/cfg"
+import "github.com/daulet140/gotemplate/internal/cfg"
 
 func generateDBModels(config cfg.Config) (string, error) {
 	var modelTemplate = "package models\n\ntype Example struct {\n\tId int64 `json:\"id\" db:\"id\"`\n\tUsername string `json:\"username\" db:\"username\"`\n\tPassword string `json:\"password\" db:\"password\"`\n\tCreatedAt string `json:\"created_at\" db:\"created_at\"`\n\tUpdatedAt string `json:\"updated_at\" db:\"updated_at\"`\n}"

@@ -1,7 +1,7 @@
 package files
 
 import (
-	"projectgenerator/internal/cfg"
+	"github.com/daulet140/gotemplate/internal/cfg"
 )
 
 func generateCommonRequest(config cfg.Config) (string, error) {

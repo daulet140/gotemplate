@@ -1,6 +1,6 @@
 package files
 
-import "projectgenerator/internal/cfg"
+import "github.com/daulet140/gotemplate/internal/cfg"
 
 func generateV1Auth(config cfg.Config) (string, error) {
 	var authTemplate = `package auth

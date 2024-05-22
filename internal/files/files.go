@@ -2,8 +2,8 @@ package files
 
 import (
 	"fmt"
+	"github.com/daulet140/gotemplate/internal/cfg"
 	"log"
-	"projectgenerator/internal/cfg"
 )
 
 type files interface {

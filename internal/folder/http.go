@@ -1,6 +1,6 @@
 package folder
 
-import "projectgenerator/internal/cfg"
+import "github.com/daulet140/gotemplate/internal/cfg"
 
 func createHttpDir(internalDir string, config cfg.Config) (string, error) {
 	httpDir := internalDir + "/http"

@@ -2,7 +2,7 @@ package folder
 
 import (
 	"fmt"
-	"projectgenerator/internal/cfg"
+	"github.com/daulet140/gotemplate/internal/cfg"
 )
 
 type folder interface {

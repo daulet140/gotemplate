@@ -1,6 +1,6 @@
 package files
 
-import "projectgenerator/internal/cfg"
+import "github.com/daulet140/gotemplate/internal/cfg"
 
 func fillModFile(config cfg.Config) (string, error) {
 	var modTemplate = `

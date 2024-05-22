@@ -3,10 +3,10 @@ package main
 import (
 	"flag"
 	"fmt"
+	"github.com/daulet140/gotemplate/internal/cfg"
+	"github.com/daulet140/gotemplate/internal/files"
+	"github.com/daulet140/gotemplate/internal/folder"
 	"os"
-	"projectgenerator/internal/cfg"
-	"projectgenerator/internal/files"
-	"projectgenerator/internal/folder"
 )
 
 func main() {
