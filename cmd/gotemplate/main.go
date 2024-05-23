@@ -15,11 +15,11 @@ func main() {
 	projectName := flag.String("name", "", "Project name")
 	dbType := flag.String("db", "-", "Database type (postgres or mysql or sqlite3 or mssql)")
 	withAuth := flag.String("auth", "false", "Use auth (true or false)")
-	jsonStruct := flag.String("struct", "test.json", "File path to JSON struct")
+	jsonStruct := flag.String("struct", "", "File path to JSON struct")
 
 	flag.Parse()
 
-	if *projectName == "" || *help != "" {
+	if (*projectName == "" || *jsonStruct == "") || *help != "" {
 		flag.PrintDefaults()
 		return
 	}
