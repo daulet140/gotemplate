@@ -159,5 +159,5 @@ func (e *{{.LowerStructName}}) delete(ctx *gin.Context) {
 	if err != nil {
 		return databaseRepoFile, err
 	}
-	return "", nil
+	return databaseRepoFile, nil
 }
