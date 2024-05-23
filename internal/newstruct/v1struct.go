@@ -154,7 +154,7 @@ func (e *{{.LowerStructName}}) delete(ctx *gin.Context) {
 	ctx.JSON(http.StatusNoContent, nil)
 }
 `
-	databaseRepoFile := fmt.Sprintf("generated_%s_internal/http/v1/%s/%s.go", data.FileName, data.LowerStructName, data.LowerStructName)
+	databaseRepoFile := fmt.Sprintf("internal/http/v1/%s/%s.go", data.LowerStructName, data.LowerStructName)
 	err := generateFile(databaseRepoFile, iniV1Template, data)
 	if err != nil {
 		return databaseRepoFile, err

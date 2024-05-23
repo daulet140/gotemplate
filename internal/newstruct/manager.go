@@ -53,6 +53,6 @@ func (l *{{.LowerStructName}}Manager) Delete(ctx context.Context, {{.LowerStruct
 
 `
 
-	databaseRepoFile := fmt.Sprintf("manager/v1/%s.go", data.FileName)
-	return databaseRepoFile, generateFile(fmt.Sprintf("generated_%s_internal/manager/v1/%s.go", data.FileName, data.LowerStructName), managerTemplate, data)
+	databaseRepoFile := fmt.Sprintf("internal/manager/v1/%s.go", data.LowerStructName)
+	return databaseRepoFile, generateFile(databaseRepoFile, managerTemplate, data)
 }

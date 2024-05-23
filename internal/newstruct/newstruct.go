@@ -31,46 +31,60 @@ func (j *jsonStruct) GenerateStructFromJSON(jsonFile string) (string, error) {
 
 	filename := strings.Split(jsonFile, ".")[0]
 
-	jsonStructInternal := fmt.Sprintf("generated_%s_internal", filename)
-	err = generateDirectory(jsonStructInternal)
+	internalDir := "internal"
+	err = generateDirectory(internalDir)
 	if err != nil {
-		return jsonStructInternal, err
+		log.Println(err)
+	} else {
+		log.Printf("directory created:  %s", internalDir)
 	}
 
-	modelsDir := fmt.Sprintf("%s/models", jsonStructInternal)
+	modelsDir := fmt.Sprintf("%s/models", internalDir)
 	err = generateDirectory(modelsDir)
 	if err != nil {
-		return modelsDir, err
+		log.Println(err)
+	} else {
+		log.Printf("directory created:  %s", modelsDir)
 	}
 
-	databaseDir := fmt.Sprintf("%s/database", jsonStructInternal)
+	databaseDir := fmt.Sprintf("%s/database", internalDir)
 	err = generateDirectory(databaseDir)
 	if err != nil {
-		return databaseDir, err
+		log.Println(err)
+	} else {
+		log.Printf("directory created:  %s", databaseDir)
 	}
 
-	managerDir := fmt.Sprintf("%s/manager", jsonStructInternal)
+	managerDir := fmt.Sprintf("%s/manager", internalDir)
 	err = generateDirectory(managerDir)
 	if err != nil {
-		return managerDir, err
+		log.Println(err)
+	} else {
+		log.Printf("directory created:  %s", managerDir)
 	}
 
 	managerV1Dir := fmt.Sprintf("%s/v1", managerDir)
 	err = generateDirectory(managerV1Dir)
 	if err != nil {
-		return managerV1Dir, err
+		log.Println(err)
+	} else {
+		log.Printf("directory created:  %s", managerV1Dir)
 	}
 
-	httpDir := fmt.Sprintf("%s/http", jsonStructInternal)
+	httpDir := fmt.Sprintf("%s/http", internalDir)
 	err = generateDirectory(httpDir)
 	if err != nil {
-		return httpDir, err
+		log.Println(err)
+	} else {
+		log.Printf("directory created:  %s", httpDir)
 	}
 
 	httpDirV1 := fmt.Sprintf("%s/v1", httpDir)
 	err = generateDirectory(httpDirV1)
 	if err != nil {
-		return httpDirV1, err
+		log.Println(err)
+	} else {
+		log.Printf("directory created:  %s", httpDirV1)
 	}
 
 	jsonData, err := readJSONFromFile(jsonFile)
@@ -93,31 +107,41 @@ func (j *jsonStruct) GenerateStructFromJSON(jsonFile string) (string, error) {
 		StructDefinitions: structDefinitions,
 		LowerStructName:   strings.ToLower(mainStruct),
 	}
-	err = writeStructToFile(*data, fmt.Sprintf(modelsDir+"/%s_%s.go", filename, strings.ToLower(mainStruct)))
+	modelFile := fmt.Sprintf(modelsDir+"/%s_%s.go", filename, data.LowerStructName)
+	err = writeStructToFile(*data, modelFile)
 	if err != nil {
-
-		log.Fatalf("Error writing struct to file: %v", err)
+		log.Printf("Error writing struct to file: %v", err)
+	} else {
+		log.Printf("file created: %s", modelFile)
 	}
 
 	file, err := generateExampleRepo(data)
 	if err != nil {
-		log.Fatalf("%s Error writing struct to file: %v", file, err)
+		log.Printf("%s error creating to file err: %v", file, err)
+	} else {
+		log.Printf("file created: %s", file)
 	}
 
 	file, err = generateManager(data)
 	if err != nil {
-		log.Fatalf("%s Error writing struct to file: %v", file, err)
+		log.Printf("%s error creating to file err: %v", file, err)
+	} else {
+		log.Printf("file created: %s", file)
 	}
 
 	httpDirV1Struct := fmt.Sprintf("%s/%s", httpDirV1, data.LowerStructName)
 	err = generateDirectory(httpDirV1Struct)
 	if err != nil {
-		return httpDirV1Struct, err
+		log.Printf("Error creating directory: %s", httpDirV1Struct)
+	} else {
+		log.Printf("directory created: %s", httpDirV1Struct)
 	}
 
 	file, err = generateV1Struct(data)
 	if err != nil {
-		log.Fatalf("%s Error writing struct to file: %v", file, err)
+		log.Printf("%s error creating to file err: %v", file, err)
+	} else {
+		log.Printf("file created: %s", file)
 	}
 
 	fmt.Println("Struct generated and written to file successfully.")

@@ -70,6 +70,6 @@ func (l *{{.LowerStructName}}Repo) Save(ctx context.Context, username,password s
 }
 
 `
-	databaseRepoFile := fmt.Sprintf("repo_%s.go", data.FileName)
-	return databaseRepoFile, generateFile(fmt.Sprintf("generated_%s_internal/database/repo_%s.go", data.FileName, data.LowerStructName), iniExampleRepoTemplate, data)
+	databaseRepoFile := fmt.Sprintf("internal/database/repo_%s.go", data.LowerStructName)
+	return databaseRepoFile, generateFile(databaseRepoFile, iniExampleRepoTemplate, data)
 }
