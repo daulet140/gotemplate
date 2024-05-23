@@ -12,15 +12,10 @@ import (
 )
 
 type ExampleManager interface {
-	// GetAll
 	GetAll(ctx context.Context) ([]models.Example, error)
-	// GetById
 	GetById(ctx context.Context, exampleId int64) (models.Example, error)
-	// Update
 	Update(ctx context.Context, example *models.Example) error
-	// Save
 	Save(ctx context.Context, example *models.Example) error
-	// Delete
 	Delete(ctx context.Context, exampleId int64) error
 }
 

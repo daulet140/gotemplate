@@ -174,28 +174,28 @@ func (l *exampleRepo) GetAll(ctx context.Context) ([]models.Example, error) {
 	return examples, err
 }
 
-// GetExample - get example
+// GetById - get example
 func (l *exampleRepo) GetById(ctx context.Context, exampleId int64) (models.Example, error) {
 	var example models.Example
 	err := l.db.GetContext(ctx, &example, "SELECT * FROM example WHERE id = $1", exampleId)
 	return example, err
 }
 
-// UpdateExample - update example
+// Update - update example
 func (l *exampleRepo) Update(ctx context.Context, example *models.Example) error {
 	query := "UPDATE example SET username = $1, password = $2 WHERE id = $4"
 	_, err := l.db.ExecContext(ctx, query, example.Username, example.Password, example.Id)
 	return err
 }
 
-// DeleteExample - delete example
+// Delete - delete example
 func (l *exampleRepo) Delete(ctx context.Context, exampleId int64) error {
 	query := "DELETE FROM example WHERE id = $1"
 	_, err := l.db.ExecContext(ctx, query, exampleId)
 	return err
 }
 
-// SaveExample - save example
+// Save - save example
 func (l *exampleRepo) Save(ctx context.Context, username,password string) error {
 	query := "INSERT INTO example (username,password) VALUES ($1, $2)"
 	_, err := l.db.ExecContext(ctx, query, username,password)
