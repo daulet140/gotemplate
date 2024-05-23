@@ -19,7 +19,7 @@ func main() {
 
 	flag.Parse()
 
-	if (*projectName == "" || *jsonStruct == "") || *help != "" {
+	if (*projectName == "" && *jsonStruct == "") || *help != "" {
 		flag.PrintDefaults()
 		return
 	}
