@@ -1,0 +1,18 @@
+{
+  "data": {
+    "id": 13,
+    "name": "test",
+    "type": "test",
+    "attributes": {
+      "item":{
+        "key":"test",
+        "value":"test"
+      },
+      "test": "test",
+      "test2": "test2"
+    },
+    "relationships": [
+      "test"
+    ]
+  }
+}
