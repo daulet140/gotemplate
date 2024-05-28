@@ -42,6 +42,15 @@ func generateStructFromJSON(jsonData map[string]interface{}, structName string, 
 				Definition: nestedStruct,
 			})
 		}
+		fieldNameParts := strings.Split(fieldName, "_")
+		if len(fieldNameParts) > 1 {
+			fieldName = fieldNameParts[0]
+			for i, part := range fieldNameParts {
+				if i > 0 {
+					fieldName += strings.Title(part)
+				}
+			}
+		}
 		structFields = append(structFields, fmt.Sprintf("\t%s %s `json:\"%s\" db:\"%s\"`", fieldName, fieldType, key, key))
 
 	}
